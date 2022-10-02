@@ -1,21 +1,21 @@
 pipeline {
   agent any
-  tool {
-    maven 
+  tools{
+    maven 'M2_HOME' 
   stages {
-    stage('checkout')
-      steps {
-        echo '
+    stage('checkout'){
+      steps{
+        git branch: 'main', url: 'https://github.com/geovie19/Battleboat-Game.git'
       }
   }
-  stage('build') {
-    steps {
-      echo '
+  stage('code build'){
+    steps{
+      sh 'mvn clean package'
     }
   } 
    stage('Test') {
             steps {
-                echo 'Testing..'
+             sh 'mvn test'
             }
         }
         stage('Deploy') {
