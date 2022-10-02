@@ -10,14 +10,20 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/geovie19/Battleboat-Game.git'
             }
         }
-        stage('Code Build') {
+        stage('Build') {
             steps {
                 sh 'mvn clean package'
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
         stage('Test') {
             steps {
                 sh 'mvn test'
+                                /* `make check` returns non-zero on test failures,
+                * using `true` to allow the Pipeline to continue nonetheless
+                */
+                sh 'make check || true' 
+                junit '**/target/*.xml'
             }
         }
         stage('Build Image') {
