@@ -27,15 +27,16 @@ pipeline {
             }
         }
        
-        stage('Deploy image') {
-            steps{
-                script{ 
-                    docker.withRegistry("https://"+registry,"ecr:us-east-1:"+registryCredential) {
-                        dockerImage.push()
-                    }
-                }
+       stage('Deploy') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+              }
             }
-        }  
+            steps {
+                sh 'make publish'
+            }
+        }
     }
 }
  
