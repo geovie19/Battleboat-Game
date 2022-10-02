@@ -26,13 +26,7 @@ pipeline {
                 junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
             }
         }
-        stage('Build Image') {
-            steps {
-                script{
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                } 
-            }
-        }
+       
         stage('Deploy image') {
             steps{
                 script{ 
