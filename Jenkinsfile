@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout'){
             steps{
-                git branch: 'main', url: 'https://github.com/geovie19/Geolocation.git'
+                git branch: 'main', url: 'https://github.com/geovie19/Battleboat-Game.git'
             }
         }
         stage('Code Build') {
