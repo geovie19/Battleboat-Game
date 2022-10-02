@@ -8,12 +8,12 @@ pipeline {
         git branch: 'main', url: 'https://github.com/geovie19/Battleboat-Game.git'
       }
   }
-  stage('code build'){
-    steps{
-      sh 'mvn clean package'
+    stage('code build'){
+      steps{
+        sh 'mvn clean package'
     }
   } 
-   stage('Test') {
+    stage('Test') {
             steps {
              sh 'mvn test'
             }
