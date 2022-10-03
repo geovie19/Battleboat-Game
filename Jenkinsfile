@@ -36,13 +36,7 @@ pipeline {
        
        stage('Deploy') {
            
-                     
-                
-                 
-              );
-                    } else {
-                        error "*** File: $(artifactPath}, could not be found;
-                        
+             
             steps {
                 sh 'make publish'
             }
