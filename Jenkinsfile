@@ -43,12 +43,12 @@ pipeline {
                 nexusURL: NEXUS_URL,
                 groupId: pom.groupId,
                 version: pom.version,
-                repository: NEXUS_REPOSITORY
-                credentialId: NEXUS_CREDENTIAL_ID
+                repository: NEXUS_REPOSITORY,
+                credentialId: NEXUS_CREDENTIAL_ID,
                 artifacts: [
                     [artifactId: pom.artifactId,
                      classifier: '',
-                     file : artifactPath
+                     file : artifactPath,
                      type: pom.packaging,
                      [artifactId: pom.artifactId,
                       classifier: '',
